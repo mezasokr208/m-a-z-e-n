@@ -43,6 +43,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            transition: background 0.5s ease;
         }
 
         /* Card / Button hover effects */
@@ -74,7 +75,7 @@
 <body class="min-h-screen flex flex-col justify-between p-4 sm:p-8 relative">
 
     <!-- Ambient Background Lighting -->
-    <div class="ambient-glow"></div>
+    <div id="ambient-glow" class="ambient-glow"></div>
 
     <!-- Top Navigation Header -->
     <header class="w-full max-w-5xl mx-auto flex justify-between items-center z-10 py-4 border-b border-slate-800/80 mb-8">
@@ -117,6 +118,23 @@
                 </div>
             </a>
 
+            <!-- Quick Action: Solid Pic. -->
+            <a href="m-a-z-e-n.solided.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl font-bold border border-cyan-500/20">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">FEATURE</span>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center justify-between">
+                        Solid Pic.
+                        <i class="fa-solid fa-arrow-right text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Teleports to solided.html photo workspace.</p>
+                </div>
+            </a>
+
             <!-- Quick Action: Notes -->
             <a href="m-a-z-e-n.notes.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
                 <div class="flex items-center justify-between mb-4">
@@ -134,56 +152,56 @@
                 </div>
             </a>
 
-           <!-- Quick Action: Projects -->
-<a href="m-a-z-e-n.projects.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
-    <div class="flex items-center justify-between mb-4">
-        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold border border-emerald-500/20">
-            <i class="fa-solid fa-cubes"></i>
-        </div>
-        <span class="text-xs font-mono text-slate-500">PROJECTS</span>
-    </div>
-    <div>
-        <h2 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors flex items-center justify-between">
-            Mazen Projects
-            <i class="fa-solid fa-arrow-right text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
-        </h2>
-        <p class="text-slate-400 text-sm mt-1">Explore current creative projects & designs.</p>
-    </div>
-</a>
+            <!-- Quick Action: Projects -->
+            <a href="m-a-z-e-n.projects.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold border border-emerald-500/20">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">PROJECTS</span>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors flex items-center justify-between">
+                        Mazen Projects
+                        <i class="fa-solid fa-arrow-right text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Explore current creative projects & designs.</p>
+                </div>
+            </a>
 
-           <!-- Quick Action: Settings / Profile -->
-<a href="m-a-z-e-n.settings.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
-    <div class="flex items-center justify-between mb-4">
-        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl font-bold border border-purple-500/20">
-            <i class="fa-solid fa-sliders"></i>
-        </div>
-        <span class="text-xs font-mono text-slate-500">CONFIG</span>
-    </div>
-    <div>
-        <h2 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors flex items-center justify-between">
-            System Settings
-            <i class="fa-solid fa-arrow-right text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
-        </h2>
-        <p class="text-slate-400 text-sm mt-1">Manage portal preferences and visual theme.</p>
-    </div>
-</a>
+            <!-- Quick Action: Settings / Profile -->
+            <a href="m-a-z-e-n.settings.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl font-bold border border-purple-500/20">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">CONFIG</span>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors flex items-center justify-between">
+                        System Settings
+                        <i class="fa-solid fa-arrow-right text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Manage portal preferences and visual theme.</p>
+                </div>
+            </a>
 
-           <!-- Quick Action: Media Gallery -->
-<a href="m-a-z-e-n.media.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
-    <div class="flex items-center justify-between mb-4">
-        <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl font-bold border border-rose-500/20">
-            <i class="fa-solid fa-photo-film"></i>
-        </div>
-        <span class="text-xs font-mono text-slate-500">GALLERY</span>
-    </div>
-    <div>
-        <h2 class="text-lg font-bold text-white group-hover:text-rose-300 transition-colors flex items-center justify-between">
-            Media Vault
-            <i class="fa-solid fa-arrow-right text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
-        </h2>
-        <p class="text-slate-400 text-sm mt-1">Browse photo archives & studio artwork.</p>
-    </div>
-</a>
+            <!-- Quick Action: Media Gallery -->
+            <a href="m-a-z-e-n.media.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl font-bold border border-rose-500/20">
+                        <i class="fa-solid fa-photo-film"></i>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500">GALLERY</span>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white group-hover:text-rose-300 transition-colors flex items-center justify-between">
+                        Media Vault
+                        <i class="fa-solid fa-arrow-right text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Browse photo archives & studio artwork.</p>
+                </div>
+            </a>
 
         </div>
 
@@ -195,28 +213,25 @@
     </footer>
 
     <script>
-    // Apply saved ambient accent glow color on page load
-    const savedColor = localStorage.getItem('mazen_theme_color') || 'purple';
-    const glowColors = {
-        purple: 'rgba(168, 85, 247, 0.08)',
-        blue: 'rgba(59, 130, 246, 0.08)',
-        emerald: 'rgba(16, 185, 129, 0.08)',
-        amber: 'rgba(245, 158, 11, 0.08)',
-        rose: 'rgba(244, 63, 94, 0.08)'
-    };
-    
-    const glowElement = document.querySelector('.ambient-glow') || document.getElementById('ambient-glow');
-    if (glowElement && glowColors[savedColor]) {
-        glowElement.style.background = `radial-gradient(circle, ${glowColors[savedColor]} 0%, rgba(0, 0, 0, 0) 70%)`;
-    }
+        // Apply saved ambient accent glow color on page load
+        const savedColor = localStorage.getItem('mazen_theme_color') || 'purple';
+        const glowColors = {
+            purple: 'rgba(168, 85, 247, 0.08)',
+            blue: 'rgba(59, 130, 246, 0.08)',
+            emerald: 'rgba(16, 185, 129, 0.08)',
+            amber: 'rgba(245, 158, 11, 0.08)',
+            rose: 'rgba(244, 63, 94, 0.08)'
+        };
+        
+        const glowElement = document.querySelector('.ambient-glow') || document.getElementById('ambient-glow');
+        if (glowElement && glowColors[savedColor]) {
+            glowElement.style.background = `radial-gradient(circle, ${glowColors[savedColor]} 0%, rgba(0, 0, 0, 0) 70%)`;
+        }
 
-    // Apply glow enabled/disabled state
-    const glowState = localStorage.getItem('mazen_glow_enabled') !== 'false';
-    if (glowElement && !glowState) {
-        glowElement.style.opacity = '0';
-    }
-</script>
-
-
+        const glowState = localStorage.getItem('mazen_glow_enabled') !== 'false';
+        if (glowElement && !glowState) {
+            glowElement.style.opacity = '0';
+        }
+    </script>
 </body>
 </html>
