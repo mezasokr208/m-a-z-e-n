@@ -52,10 +52,8 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between p-4 sm:p-8 relative">
 
-    <!-- Ambient Background Light -->
     <div id="ambient-glow" class="ambient-glow"></div>
 
-    <!-- Top Navigation Header -->
     <header class="w-full max-w-4xl mx-auto flex justify-between items-center z-10 py-4 border-b border-slate-800/80 mb-8">
         <a href="m-a-z-e-n.dashboard.html" class="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-semibold tracking-wider">
             <i class="fa-solid fa-arrow-left"></i> BACK TO DASHBOARD
@@ -63,10 +61,8 @@
         <span class="text-xs font-mono text-slate-500 tracking-widest uppercase">System Controls</span>
     </header>
 
-    <!-- Main Content Container -->
     <main class="w-full max-w-4xl mx-auto flex-grow z-10 space-y-8">
         
-        <!-- Header -->
         <div class="border-b border-slate-800/50 pb-6">
             <h1 class="glow-text text-3xl sm:text-4xl font-extrabold uppercase text-slate-100">
                 SYSTEM SETTINGS
@@ -74,10 +70,9 @@
             <p class="text-slate-400 text-sm font-mono mt-1">PORTAL PREFERENCES & CUSTOMIZATION</p>
         </div>
 
-        <!-- Settings Cards List -->
         <div class="space-y-6">
 
-            <!-- 1. Visual Theme Glow Color -->
+            <!-- Theme Color -->
             <div class="setting-card rounded-2xl p-6 space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4">
                     <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg border border-purple-500/20">
@@ -108,7 +103,7 @@
                 </div>
             </div>
 
-            <!-- 2. Display Name Configuration -->
+            <!-- Display Name -->
             <div class="setting-card rounded-2xl p-6 space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4">
                     <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg border border-blue-500/20">
@@ -136,7 +131,7 @@
                 </div>
             </div>
 
-            <!-- 3. Visual Effects Toggle -->
+            <!-- Glow Toggle -->
             <div class="setting-card rounded-2xl p-6 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/20">
@@ -153,7 +148,7 @@
                 </button>
             </div>
 
-            <!-- 4. Data Backup & Storage Controls -->
+            <!-- Data Backup, Import & Reset Controls -->
             <div class="setting-card rounded-2xl p-6 space-y-4">
                 <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4">
                     <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg border border-amber-500/20">
@@ -161,7 +156,7 @@
                     </div>
                     <div>
                         <h2 class="text-base font-bold text-white">Portal Data & Storage</h2>
-                        <p class="text-slate-400 text-xs">Export notes, projects, and media data or reset workspace defaults.</p>
+                        <p class="text-slate-400 text-xs">Export, import, or reset workspace data.</p>
                     </div>
                 </div>
 
@@ -169,6 +164,13 @@
                     <button onclick="exportData()" class="px-5 py-2.5 rounded-xl border border-slate-700 hover:border-amber-500/50 bg-slate-900 text-xs font-bold uppercase tracking-wider text-slate-200 hover:text-white transition-all flex items-center gap-2">
                         <i class="fa-solid fa-download"></i> Export Workspace JSON
                     </button>
+                    
+                    <!-- Hidden File Input for Importing -->
+                    <input type="file" id="import-file-input" accept=".json" class="hidden" onchange="importData(event)">
+                    <button onclick="document.getElementById('import-file-input').click()" class="px-5 py-2.5 rounded-xl border border-blue-500/30 bg-blue-950/20 hover:bg-blue-900/40 text-xs font-bold uppercase tracking-wider text-blue-300 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-upload"></i> Import Data
+                    </button>
+
                     <button onclick="resetData()" class="px-5 py-2.5 rounded-xl border border-rose-500/30 bg-rose-950/20 hover:bg-rose-900/40 text-xs font-bold uppercase tracking-wider text-rose-300 transition-all flex items-center gap-2">
                         <i class="fa-solid fa-trash-arrow-up"></i> Reset All Data
                     </button>
@@ -179,12 +181,10 @@
 
     </main>
 
-    <!-- Aesthetic Footer -->
     <footer class="w-full max-w-4xl mx-auto text-center z-10 py-6 border-t border-slate-800/80 mt-8">
         <span class="text-slate-500 text-xs tracking-widest font-mono">MAZEN'S STUDIO &copy; SETTINGS</span>
     </footer>
 
-    <!-- JavaScript Settings Logic -->
     <script>
         const ambientGlow = document.getElementById('ambient-glow');
         const displayNameInput = document.getElementById('display-name-input');
@@ -198,7 +198,6 @@
             rose: 'rgba(244, 63, 94, 0.08)'
         };
 
-        // Load Saved Settings
         function loadSettings() {
             const savedColor = localStorage.getItem('mazen_theme_color') || 'purple';
             setAccentColor(savedColor, false);
@@ -210,7 +209,6 @@
             applyGlowState(glowState);
         }
 
-        // Change Accent Glow Color
         function setAccentColor(colorKey, save = true) {
             if (colors[colorKey]) {
                 ambientGlow.style.background = `radial-gradient(circle, ${colors[colorKey]} 0%, rgba(0, 0, 0, 0) 70%)`;
@@ -220,14 +218,12 @@
             }
         }
 
-        // Save Custom Title / Display Name
         function saveDisplayName() {
             const name = displayNameInput.value.trim() || 'M-A-Z-E-N S_E_R_A_G';
             localStorage.setItem('mazen_display_name', name);
             alert('Display name updated successfully!');
         }
 
-        // Toggle Background Glow Effect
         function toggleGlow() {
             const currentState = localStorage.getItem('mazen_glow_enabled') !== 'false';
             const newState = !currentState;
@@ -247,7 +243,6 @@
             }
         }
 
-        // Export Notes, Projects, and Media to JSON File
         function exportData() {
             const data = {
                 notes: JSON.parse(localStorage.getItem('mazen_studio_notes') || '[]'),
@@ -267,17 +262,35 @@
             URL.revokeObjectURL(url);
         }
 
-        // Reset All Workspace Data (Notes, Projects, Media)
+        // Import Data Function
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed.notes) localStorage.setItem('mazen_studio_notes', JSON.stringify(parsed.notes));
+                    if (parsed.projects) localStorage.setItem('mazen_studio_projects', JSON.stringify(parsed.projects));
+                    if (parsed.media) localStorage.setItem('mazen_studio_media', JSON.stringify(parsed.media));
+                    alert('Workspace data imported successfully!');
+                } catch (err) {
+                    alert('Invalid JSON backup file.');
+                }
+            };
+            reader.readAsText(file);
+        }
+
         function resetData() {
             if (confirm('Are you sure you want to delete all saved notes, website projects, and media vault items?')) {
                 localStorage.removeItem('mazen_studio_notes');
                 localStorage.removeItem('mazen_studio_projects');
                 localStorage.removeItem('mazen_studio_media');
-                alert('Workspace data (Notes, Projects, and Media Vault) has been reset.');
+                alert('Workspace data has been reset.');
             }
         }
 
-        // Initialize Settings
         loadSettings();
     </script>
 </body>
