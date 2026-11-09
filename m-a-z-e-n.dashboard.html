@@ -22,7 +22,6 @@
             overflow-x: hidden;
         }
 
-        /* Glowing text effect */
         .glow-text {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: 0.25em;
@@ -31,7 +30,6 @@
                          0 0 30px rgba(255, 255, 255, 0.1);
         }
 
-        /* Ambient background glow */
         .ambient-glow {
             position: fixed;
             width: 450px;
@@ -46,7 +44,6 @@
             transition: background 0.5s ease;
         }
 
-        /* Card / Button hover effects */
         .dash-card {
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -74,6 +71,35 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between p-4 sm:p-8 relative">
 
+    <!-- Password Protection Overlay Modal -->
+    <div id="password-modal" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-md p-8 space-y-6 shadow-2xl text-center">
+            <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center text-2xl mx-auto">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div>
+                <h2 class="text-xl font-bold text-white tracking-wide">Dashboard Locked</h2>
+                <p class="text-slate-400 text-xs mt-1">Enter password to access Mazen's Dashboard</p>
+            </div>
+            <form id="password-form" class="space-y-4">
+                <input 
+                    type="password" 
+                    id="password-input" 
+                    required 
+                    placeholder="Enter password..." 
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 text-sm transition-colors text-center tracking-widest"
+                />
+                <button 
+                    type="submit" 
+                    class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-widest transition-colors shadow-lg shadow-blue-600/20"
+                >
+                    Unlock Dashboard
+                </button>
+            </form>
+            <p id="error-msg" class="text-rose-400 text-xs hidden">Incorrect password. Try again.</p>
+        </div>
+    </div>
+
     <!-- Ambient Background Lighting -->
     <div id="ambient-glow" class="ambient-glow"></div>
 
@@ -88,7 +114,6 @@
     <!-- Main Content Grid -->
     <main class="w-full max-w-5xl mx-auto flex-grow flex flex-col justify-center z-10 space-y-8 my-auto">
         
-        <!-- Header Title -->
         <div class="text-center space-y-2">
             <h1 class="glow-text text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-widest text-slate-100">
                 M-A-Z-E-N S_E_R_A_G
@@ -96,10 +121,8 @@
             <p class="text-slate-400 text-sm tracking-widest font-mono">PORTAL & QUICK LINKS</p>
         </div>
 
-        <!-- Dashboard Action Buttons Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
 
-            <!-- Featured Skolera LMS Link Button -->
             <a href="https://msg.skoleralms.com" target="_blank" rel="noopener noreferrer" class="dash-card skolera-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer lg:col-span-2">
                 <div class="flex items-center justify-between mb-4">
                     <div class="w-12 h-12 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-xl font-bold border border-blue-500/30">
@@ -118,8 +141,7 @@
                 </div>
             </a>
 
-            <!-- Quick Action: Solid Pic. -->
-            <a href="m-a-z-e-n.solided.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
+            <a href="solided.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
                 <div class="flex items-center justify-between mb-4">
                     <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl font-bold border border-cyan-500/20">
                         <i class="fa-solid fa-image"></i>
@@ -135,7 +157,6 @@
                 </div>
             </a>
 
-            <!-- Quick Action: Notes -->
             <a href="m-a-z-e-n.notes.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
                 <div class="flex items-center justify-between mb-4">
                     <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl font-bold border border-amber-500/20">
@@ -152,7 +173,6 @@
                 </div>
             </a>
 
-            <!-- Quick Action: Projects -->
             <a href="m-a-z-e-n.projects.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
                 <div class="flex items-center justify-between mb-4">
                     <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold border border-emerald-500/20">
@@ -169,7 +189,6 @@
                 </div>
             </a>
 
-            <!-- Quick Action: Settings / Profile -->
             <a href="m-a-z-e-n.settings.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
                 <div class="flex items-center justify-between mb-4">
                     <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl font-bold border border-purple-500/20">
@@ -186,7 +205,6 @@
                 </div>
             </a>
 
-            <!-- Quick Action: Media Gallery -->
             <a href="m-a-z-e-n.media.html" class="dash-card rounded-2xl p-6 flex flex-col justify-between group cursor-pointer block">
                 <div class="flex items-center justify-between mb-4">
                     <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl font-bold border border-rose-500/20">
@@ -207,13 +225,34 @@
 
     </main>
 
-    <!-- Aesthetic Footer -->
     <footer class="w-full max-w-5xl mx-auto text-center z-10 py-6 border-t border-slate-800/80 mt-8">
         <span class="text-slate-500 text-xs tracking-widest font-mono">MAZEN'S STUDIO &copy; DASHBOARD</span>
     </footer>
 
     <script>
-        // Apply saved ambient accent glow color on page load
+        // Password Authentication Logic
+        const passwordModal = document.getElementById('password-modal');
+        const passwordForm = document.getElementById('password-form');
+        const passwordInput = document.getElementById('password-input');
+        const errorMsg = document.getElementById('error-msg');
+
+        if (sessionStorage.getItem('dashboard_authenticated') === 'true') {
+            passwordModal.classList.add('hidden');
+        }
+
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (passwordInput.value === 'M-A-Z-E-N-S-E-R-A-G') {
+                sessionStorage.setItem('dashboard_authenticated', 'true');
+                passwordModal.classList.add('hidden');
+            } else {
+                errorMsg.classList.remove('hidden');
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        });
+
+        // Ambient Glow Theme Settings
         const savedColor = localStorage.getItem('mazen_theme_color') || 'purple';
         const glowColors = {
             purple: 'rgba(168, 85, 247, 0.08)',
