@@ -24,7 +24,6 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Back to dashboard button (visible on hover) */
         .back-nav {
             position: fixed;
             top: 20px;
@@ -40,12 +39,10 @@
 </head>
 <body id="page-body" class="w-screen h-screen flex items-center justify-center relative">
 
-    <!-- Back Button -->
     <a href="m-a-z-e-n.dashboard.html" class="back-nav inline-flex items-center gap-2 bg-slate-900/80 border border-slate-700 px-4 py-2 rounded-xl text-white text-xs font-semibold tracking-wider backdrop-blur-md">
         <i class="fa-solid fa-arrow-left"></i> DASHBOARD
     </a>
 
-    <!-- Photo Container -->
     <main class="w-full h-full flex items-center justify-center p-4">
         <div class="relative w-full max-w-2xl aspect-square max-h-[85vh] flex items-center justify-center">
             <img 
@@ -58,45 +55,24 @@
         </div>
     </main>
 
-    <!-- Slide & Flash Script -->
     <script>
         const imgElement = document.getElementById('slideshow-img');
         const bodyElement = document.getElementById('page-body');
 
-        // Gather photo list from Media Vault or fallback to default photo
-        function getPhotoList() {
-            const mediaStorage = localStorage.getItem('mazen_studio_media');
-            if (mediaStorage) {
-                try {
-                    const parsed = JSON.parse(mediaStorage);
-                    const urls = parsed.map(item => item.url).filter(Boolean);
-                    if (urls.length > 0) return urls;
-                } catch (e) {
-                    console.error(e);
-                }
-            }
-            return ['1000103083.jpg'];
-        }
-
-        let currentIndex = 0;
-        let photos = getPhotoList();
+        // Only use your specific photo file
+        const photos = ['1000103083.jpg'];
 
         function triggerCycle() {
-            // 1. Turn screen completely white for 3.5 seconds
             bodyElement.style.backgroundColor = '#ffffff';
-            imgElement.style.opacity = '0'; // Hide photo during white flash
+            imgElement.style.opacity = '0';
 
             setTimeout(() => {
-                // 2. Switch photo and revert background back to black
-                currentIndex = (currentIndex + 1) % photos.length;
-                imgElement.src = photos[currentIndex];
-                
                 bodyElement.style.backgroundColor = '#000000';
-                imgElement.style.opacity = '1'; // Show photo
-            }, 3500); // 3.5 seconds white screen duration
+                imgElement.style.opacity = '1';
+            }, 3500); // 3.5 seconds white screen
         }
 
-        // Set interval to every 3 minutes (180,000 ms)
+        // Every 3 minutes (180,000 ms)
         setInterval(triggerCycle, 180000);
     </script>
 </body>
